@@ -1,123 +1,121 @@
-# Object Oriented Programming (OOP) Part 2 - Cash Register Lab
+# Cash Register Lab
 
-Now that we’ve discussed more about object oriented design philosophies and techniques like decorators we will be looking at building more complex objects. In this case we will be building a cash register object to simulate different functions of a cash register for an e-commerce site. 
+## Description
 
-## Tools & Resources
-* [GitHub Repo](https://github.com/learn-co-curriculum/oop-p2-cash-register-lab)
-* [Python Classes](https://docs.python.org/3/tutorial/classes.html)
+This project implements a Cash Register using Object-Oriented Programming (OOP) principles in Python.
 
-## Instructions
+The application simulates the behavior of a cash register used in an e-commerce environment. It allows users to:
 
-### Set Up
+* Add items to a register
+* Track purchase totals
+* Apply percentage discounts
+* Void the most recent transaction
+* Maintain a list of purchased items
 
-Before we begin coding, let's complete the initial setup for this lesson: 
-* Fork and Clone: For this lesson, you will need the following GitHub Repo:
-  * Go to the provided GitHub repository link.
-  * Fork the repository to your GitHub account.
-  * Clone the forked repository to your local machine.
-* Open and Run File
-  * Open the project in VSCode.
-  * Run npm install to install all necessary dependencies.
+## Features
 
-### Task 1: Define the Problem
+### CashRegister Class
 
-Build a model for a cash register
-* Build a cash register object
-* Add items
-* Apply discounts
-* Void previous transactions
+#### Attributes
 
-### Task 2: Determine the Design
+* `discount` - Percentage discount applied to purchases
+* `total` - Running total of all items added
+* `items` - List containing all purchased items
+* `previous_transactions` - Stores information about previous transactions
 
-Cash Register
-* Attributes
-  * discount
-  * total
-  * items
-  * previous_transactions
-* Methods
-  * add_item(item, price, quantity)
-  * apply_discount()
-  * void_last_transaction()
+#### Methods
 
-### Task 3: Develop, Test, and Refine the Code
+##### add_item(item, price, quantity=1)
 
-#### Step 1: Git Feature Branch
+Adds an item to the register.
 
-* Create a feature branch for your work using git.
+Example:
 
-#### Step 2: Create a CashRegister class
+```python
+register.add_item("apple", 0.99)
+register.add_item("book", 5.00, 3)
+```
 
-* ```__init__```:
-  * discount
-  * Allow for user to input
-  * If no input initialize as 0
-  * Note that discount is a percentage off of the total cash register price (e.g. a discount of 20 means the customer receives 20% off of their total price)
-* ```total```
-  * Initialize as 0
-* ```items```
-  * Initialize as empty array
-* ```previous_transactions```
-  * Initialize as empty array
+##### apply_discount()
 
-#### Step 3: Properties
+Applies the configured discount to the current total.
 
-* Discount:
-  * Ensure discount is an integer
-  * Ensure that discount is between 0-100 inclusive
-  * If not print “Not valid discount”
+Example:
 
-#### Step 4: Methods
+```python
+register = CashRegister(20)
+register.apply_discount()
+```
 
-* add_item(item, price, quantity)
-  * Add price to total
-  * Add item to the items array
-  * Add an object to the previous transactions with the item, price and quantity.
-* apply_discount()
-  * Apply discount as percentage off from total
-  * Remove the last item of previous_transaction from array
-    * Ensure price reflects correctly
-    * Ensure items reflects correctly
-  * If no transactions in array print “There is no discount to apply.”
-* void_last_transaction()
-  * Remove the last item of previous_transaction from the array.
-    * Ensure the price reflects correctly.
-    * Ensure items reflect correctly.
-  * If no transactions are in the array, print “There is no transaction to void.”
+##### void_last_transaction()
 
-#### Step 5: Push feature branch and open a PR on GitHub
+Removes the most recent transaction and updates the total accordingly.
 
-* Save, commit, and push your code to GitHub.
-* Open a PR on the main branch of your own repo (be sure not to open a PR on the learn-co-curriculum repo).
+Example:
 
-#### Step 6: Merge to main
+```python
+register.void_last_transaction()
+```
 
-* Review the PR and merge your finished code into the main branch.
+## Project Structure
 
-### Task 4: Document and Maintain
+```text
+oop-p2-cash-register-lab/
+│
+├── lib/
+│   ├── cash_register.py
+│   └── testing/
+│
+├── README.md
+├── Pipfile
+└── pytest.ini
+```
 
-Best Practice documentation steps:
+## Installation
 
-* Add comments to code to explain purpose and logic
-  * Clarify intent / functionality of code to other developers
-  * Add screenshot of completed work included in Markdown in README.
-  * Update README text to reflect the functionality of the application following https://makeareadme.com. 
-* Delete any stale branches on GitHub
-* Remove unnecessary/commented out code
-* If needed, update git ignore to remove sensitive data
+Clone the repository:
 
-## Save your work and push to GitHub
+```bash
+git clone <repository-url>
+cd oop-p2-cash-register-lab
+```
 
-Before you submit your solution, you need to save your progress with git.
-1. Add your changes to the staging area by executing git add .
-2. Create a commit by executing git commit -m "Your commit message"
-3. Push your commits to GitHub by executing git push origin main or git push origin master , depending on the name of your branch (use git branch to check on which branch you are).
+Install dependencies:
 
-## Submission and Grading Criteria
+```bash
+pipenv install
+```
 
-1. Use the rubric in Canvas as a guide for how this lab is graded.
-2. Your submission will be automatically scored in CodeGrade, using the most recent commit. Remember to make sure you have pushed your commit to GitHub before submitting your assignment. 
-3. You can review your submission in CodeGrade and see your final score in your Canvas gradebook.
-4. When you are ready to submit, click the ***Load Lab: Object Oriented Programming (OOP)- Part 2- Cash Register*** button in Canvas to launch CodeGrade.
-  * Click on + Create Submission. Connect your repository for this lab.
-  * For additional information on submitting assignments in CodeGrade: [Getting Started in Canvas](https://help.codegrade.com/for-students/getting-started/getting-started-in-canvas).
+or
+
+```bash
+python3 -m pip install pytest
+```
+
+## Running Tests
+
+Run all tests:
+
+```bash
+python3 -m pytest
+```
+
+Expected result:
+
+```text
+14 passed
+```
+
+## Technologies Used
+
+* Python 3
+* Pytest
+* Object-Oriented Programming (OOP)
+
+## Author
+
+Thomas Buko
+
+## License
+
+This project was created for educational purposes as part of the Moringa School Software Engineering Program.
